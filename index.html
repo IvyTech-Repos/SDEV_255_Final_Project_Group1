@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CourseProject</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to CourseProject</h1>
+  </header>
+
+  <main>
+    <section class="course-form">
+      <h2>Add a Course</h2>
+      <label for="courseName">Course Name</label>
+      <input id="courseName" type="text" placeholder="Math 101">
+
+      <label for="description">Description</label>
+      <input id="description" type="text" placeholder="Basic Algebra">
+
+      <label for="subjectArea">Subject Area</label>
+      <input id="subjectArea" type="text" placeholder="Mathematics">
+
+      <label for="credits">Credits</label>
+      <input id="credits" type="number" min="0" placeholder="3">
+
+      <button id="addCourseButton" type="button">Add Course</button>
+    </section>
+
+    <section class="course-list">
+      <h2>Course List</h2>
+      <ul id="courseList"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
