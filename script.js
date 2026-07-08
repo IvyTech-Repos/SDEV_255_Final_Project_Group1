@@ -1,28 +1,51 @@
 let courses = [];
 
-function getCourses() {
-  return courses;
-}
+const courseNameInput = document.getElementById('courseName');
+const descriptionInput = document.getElementById('description');
+const subjectAreaInput = document.getElementById('subjectArea');
+const creditsInput = document.getElementById('credits');
+const addCourseButton = document.getElementById('addCourseButton');
+const courseList = document.getElementById('courseList');
 
-function addCourse(course) {
-  const newCourse = {
-    id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
-    ...course,
+addCourseButton.addEventListener('click', () => {
+  const courseName = courseNameInput.value.trim();
+  const description = descriptionInput.value.trim();
+  const subjectArea = subjectAreaInput.value.trim();
+  const credits = parseInt(creditsInput.value, 10) || 0;
+
+  if (!courseName || !description || !subjectArea || credits <= 0) {
+    alert('Please complete all course fields with valid values.');
+    return;
+  }
+
+  const course = {
+    courseName,
+    description,
+    subjectArea,
+    credits,
   };
 
-  courses.push(newCourse);
-  return newCourse;
+  courses.push(course);
+  displayCourses();
+  clearForm();
+});
+
+function displayCourses() {
+  courseList.innerHTML = '';
+
+  courses.forEach((course, index) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <strong>${course.courseName}</strong> - ${course.subjectArea} (${course.credits} credits)
+      <p>${course.description}</p>
+    `;
+    courseList.appendChild(listItem);
+  });
 }
 
-function getCourseById(courseId) {
-  return courses.find((course) => course.id === courseId);
-}
-
-function updateCourse(updatedCourse) {
-  courses = courses.map((course) => (course.id === updatedCourse.id ? updatedCourse : course));
-  return updatedCourse;
-}
-
-function deleteCourse(courseId) {
-  courses = courses.filter((course) => course.id !== courseId);
+function clearForm() {
+  courseNameInput.value = '';
+  descriptionInput.value = '';
+  subjectAreaInput.value = '';
+  creditsInput.value = '';
 }
