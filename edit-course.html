@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>Edit Course</h1>
+    <p>Update the selected course details.</p>
+  </header>
+
+  <main class="panel">
+    <form id="editCourseForm" class="course-form">
+      <input id="courseId" name="courseId" type="hidden">
+
+      <label for="courseName">Course Name</label>
+      <input id="courseName" name="courseName" type="text" placeholder="Math 101" required>
+
+      <label for="description">Description</label>
+      <input id="description" name="description" type="text" placeholder="Basic Algebra" required>
+
+      <label for="subjectArea">Subject Area</label>
+      <input id="subjectArea" name="subjectArea" type="text" placeholder="Mathematics" required>
+
+      <label for="credits">Credits</label>
+      <input id="credits" name="credits" type="number" min="1" placeholder="3" required>
+
+      <div class="form-actions">
+        <button type="submit">Save Changes</button>
+        <a class="secondary-link" href="manage-courses.html">Cancel</a>
+      </div>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="edit-course.js"></script>
+</body>
+</html>
