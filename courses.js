@@ -121,8 +121,8 @@ function viewCourse(id) {
 
     if (course) {
         alert(
-            `Course: $(course.name}\n` +
-            `Subject: $(course.subject}\n` +
+            `Course: ${course.name}\n` +
+            `Subject: ${course.subject}\n` +
             `Number: ${course.number}\n` +
             `Credits: ${course.credits}\n\n` +
             `${course.description}`
