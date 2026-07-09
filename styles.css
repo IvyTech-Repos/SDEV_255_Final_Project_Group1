@@ -20,7 +20,7 @@
 /*Portal Selection*/
 
 .portal-selection {
-  padding: 2rem 1 rem;
+  padding: 2rem 1rem;
   text-align: center;
 }
 
@@ -53,6 +53,20 @@
   margin-bottom: 1.5rem;
 }
 
+/*Navigation & Header*/
+
+header {
+  padding: 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
 /*Buttons*/
 
 .button {
@@ -75,9 +89,6 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   background: #f0f4f8;
   color: #1f2937;
@@ -85,13 +96,6 @@ body {
 
 header {
   text-align: center;
-}
-
-main {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 button {
