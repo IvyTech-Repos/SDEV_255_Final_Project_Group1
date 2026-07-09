@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System | Courses</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Course Management System</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="add-course.html">Add Course</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-header">
+            <h2>Software Development Courses</h2>
+
+            <p>
+                Browse all available software development courses. Teachers can add, edit, and remove courses from the available course listing.
+            </p>
+        </section>
+
+        <section class="course-controls">
+
+            <input
+            type="search"
+            id="searchCourses"
+            placeholder="Search courses..."
+            onkeyup="searchCourses()">
+
+            <a href="add-course.html" class="button">
+                + Add Course
+            </a>
+
+        </section>
+
+        <section class="course-table">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Subject</th>
+                        <th>Course #</th>
+                        <th>Course Name</th>
+                        <th>Credits</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="courseTableBody">
+                    <!-- Course rows will be generated dynamically with JavaScript -->
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Course Management System</p>
+    </footer>
+
+    <script src="courses.js"></script>
+
+</body>
+</html>
