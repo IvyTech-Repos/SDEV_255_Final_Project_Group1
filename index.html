@@ -1,40 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CourseProject</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Welcome to CourseProject</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
 
-  <main>
-    <section class="course-form">
-      <h2>Add a Course</h2>
-      <label for="courseName">Course Name</label>
-      <input id="courseName" type="text" placeholder="Math 101">
+    <header>
+      <h1>Course Management System</h1>
 
-      <label for="description">Description</label>
-      <input id="description" type="text" placeholder="Basic Algebra">
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="teacher.html">Teacher Portal</a></li>
+          <li><a href="student.html">Student Portal</a></li>
+        </ul>
+      </nav>
+    </header>
 
-      <label for="subjectArea">Subject Area</label>
-      <input id="subjectArea" type="text" placeholder="Mathematics">
+    <main>
+      <section class="hero">
 
-      <label for="credits">Credits</label>
-      <input id="credits" type="number" min="0" placeholder="3">
+        <h2>Welcome</h2>
 
-      <button id="addCourseButton" type="button">Add Course</button>
-    </section>
+        <p>
+          The Course Management System allows teachers to manage course information and allows students to search for courses, register for classes, and manage their schedules.
+        </p>
 
-    <section class="course-list">
-      <h2>Course List</h2>
-      <ul id="courseList"></ul>
-    </section>
-  </main>
+      </section>
+      
+      <section class="portal-selection">
 
-  <script src="script.js"></script>
-</body>
-</html>
+        <h2>Select a Portal</h2>
+
+        <div class="portal-cards">
+
+          <article class="portal-card">
+            <h3>Teacher Portal</h3>
+
+            <p>
+              Manage the course catalog by adding, editing, and removing available courses.
+            </p>
+
+            <a href="teacher.html" class="button">
+              Enter Teacher Portal
+            </a>
+          </article>
+
+          <article class="portal-card">
+            <h3>Student Portal</h3>
+
+            <p>
+              Search available courses, add or drop classes, and view your current schedule.
+            </p>
+
+            <a href="student.html" class="button>
+              Enter Student Portal
+            </a>
+          </article>
+
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Course Management System</p>
+    </footer>
+
+  </body>
+  </html>
+  
