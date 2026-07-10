@@ -32,7 +32,7 @@ const courses = [
 
 // Display Courses in Table
 
-function displayCourses() {
+function displayCourses(courseList = courses) {
     const tableBody = document.getElementById("courseTableBody");
 
     if (!tableBody) {
@@ -85,28 +85,8 @@ function searchCourses() {
 
 function displayFilteredCourses(courseList) {
 
-    const tableBody = document.getElementById("courseTableBody");
+    displayCourses(courseList);
 
-    tableBody.innerHTML = "";
-
-    courseList.forEach(course => {
-        
-        const row = document.createElement("tr");
-
-        row.innerHTML = `
-            <td>${course.id}</td>
-            <td>${course.subject}</td>
-            <td>${course.number}</td>
-            <td>${course.name}</td>
-            <td>${course.credits}</td>
-            <td>
-                <button>View</button>
-            </td>
-        `;
-
-        tableBody.appendChild(row);
-
-    });
 }
 
 //Page Load
@@ -120,14 +100,20 @@ function viewCourse(id) {
     const course = courses.find(course => course.id === id);
 
     if (course) {
-        alert(
-            `Course: ${course.name}\n` +
-            `Subject: ${course.subject}\n` +
-            `Number: ${course.number}\n` +
-            `Credits: ${course.credits}\n\n` +
-            `${course.description}`
-        );
+
+        const tableBody = document.getElementById("courseTableBody");
+
+        const detailsRow = document.createElement("tr");
+
+        detailsRow.innerHTML = `
+            <td colspan="6">
+                <strong>${course.subject} ${course.number} - ${course.name}</strong><br>
+                Credits: ${course.credits}<br><br>
+                ${course.description}
+            </td>
+        `;
+
+        tableBody.appendChild(detailsRow);
     }
 
 }
-
