@@ -96,3 +96,24 @@ body {
   background: #f0f4f8;
   color: #1f2937;
 }
+
+/*Dashboard Cards*/
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.dashboard-card {
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.dashboard-card button {
+  padding: 0.5rem 1 rem;
+  margin-top: 1rem;
+}
