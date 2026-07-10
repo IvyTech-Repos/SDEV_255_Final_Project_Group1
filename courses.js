@@ -41,7 +41,7 @@ function displayCourses(courseList = courses) {
 
     tableBody.innerHTML = "";
 
-    courses.forEach(course => {
+    courseList.forEach(course => {
         
         const row = document.createElement("tr");
 
@@ -103,7 +103,18 @@ function viewCourse(id) {
 
         const tableBody = document.getElementById("courseTableBody");
 
+        const existingRow = document.getElementById(`details-${id}`);
+
+        // If details are already displayed, remove them
+        if (existingRow) {
+            existingRow.remove();
+            return;
+        }
+
+        //Otherwise, create the details row
         const detailsRow = document.createElement("tr");
+
+        detailsRow.id = `details-${id}`;
 
         detailsRow.innerHTML = `
             <td colspan="6">
