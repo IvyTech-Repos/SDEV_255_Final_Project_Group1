@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System | Add Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Course Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="add-course.html" class="active">Add Course</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2 id="pageTitle">Add Course</h2>
+            <p>Fill out the details below to add or update a course in the catalog.</p>
+        </section>
+
+        <section class="course-table">
+            <form id="courseForm" class="dashboard-card">
+                <input type="hidden" id="courseId" name="courseId">
+                <div>
+                    <label for="subject">Subject</label><br>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div>
+                    <label for="number">Course Number</label><br>
+                    <input type="text" id="number" name="number" required>
+                </div>
+                <div>
+                    <label for="name">Course Name</label><br>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="credits">Credits</label><br>
+                    <input type="number" id="credits" name="credits" min="1" max="6" required>
+                </div>
+                <div>
+                    <label for="description">Description</label><br>
+                    <textarea id="description" name="description" rows="5" required></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="button">Save Course</button>
+                    <a href="courses.html" class="button">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Course Management System</p>
+    </footer>
+
+    <script src="add-course.js"></script>
+</body>
+</html>

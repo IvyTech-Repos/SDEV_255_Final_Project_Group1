@@ -1,51 +1,18 @@
-let courses = [];
+document.addEventListener("DOMContentLoaded", async () => {
 
-const courseNameInput = document.getElementById('courseName');
-const descriptionInput = document.getElementById('description');
-const subjectAreaInput = document.getElementById('subjectArea');
-const creditsInput = document.getElementById('credits');
-const addCourseButton = document.getElementById('addCourseButton');
-const courseList = document.getElementById('courseList');
+    const response = await fetch("http://localhost:3000/api/songs");
 
-addCourseButton.addEventListener('click', () => {
-  const courseName = courseNameInput.value.trim();
-  const description = descriptionInput.value.trim();
-  const subjectArea = subjectAreaInput.value.trim();
-  const credits = parseInt(creditsInput.value, 10) || 0;
+    const songs = await response.json();
 
-  if (!courseName || !description || !subjectArea || credits <= 0) {
-    alert('Please complete all course fields with valid values.');
-    return;
-  }
+    const list = document.getElementById("songs");
 
-  const course = {
-    courseName,
-    description,
-    subjectArea,
-    credits,
-  };
+    for (const song of songs) {
+        list.innerHTML += `
+            <li>
+                <strong>${song.title}</strong><br>
+                ${song.artist}
+            </li>
+        `;
+    }
 
-  courses.push(course);
-  displayCourses();
-  clearForm();
 });
-
-function displayCourses() {
-  courseList.innerHTML = '';
-
-  courses.forEach((course, index) => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `
-      <strong>${course.courseName}</strong> - ${course.subjectArea} (${course.credits} credits)
-      <p>${course.description}</p>
-    `;
-    courseList.appendChild(listItem);
-  });
-}
-
-function clearForm() {
-  courseNameInput.value = '';
-  descriptionInput.value = '';
-  subjectAreaInput.value = '';
-  creditsInput.value = '';
-}
