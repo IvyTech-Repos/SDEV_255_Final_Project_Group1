@@ -1,18 +1,48 @@
 // Course Management System
 
-let courses = [];
+let courses = [
+    {
+        id: 1,
+        subject: "IVYT",
+        number: "111",
+        name: "Student Success",
+        credits: 1,
+        description: "A foundational course for academic planning and student success."
+    },
+    {
+        id: 2,
+        subject: "CPIN",
+        number: "279",
+        name: "Information Technology Capstone",
+        credits: 1,
+        description: "A project-based capstone course for IT students."
+    },
+    {
+        id: 3,
+        subject: "DBMS",
+        number: "110",
+        name: "Introduction to Data Analytics",
+        credits: 3,
+        description: "An introductory course in databases and data systems."
+    }
+];
 
-async function refreshCourses() {
-    try {
-        const response = await fetch("/api/courses");
-        courses = await response.json();
-        displayCourses(courses);
-    } catch (error) {
-        console.error("Unable to load courses", error);
+function saveCourses() {
+    localStorage.setItem("courseCatalog", JSON.stringify(courses));
+}
+
+function loadCourses() {
+    const stored = localStorage.getItem("courseCatalog");
+    if (stored) {
+        courses = JSON.parse(stored);
     }
 }
 
-// Display Courses in Table
+function refreshCourses() {
+    loadCourses();
+    displayCourses(courses);
+}
+
 function displayCourses(courseList = courses) {
     const tableBody = document.getElementById("courseTableBody");
 
@@ -42,7 +72,6 @@ function displayCourses(courseList = courses) {
     });
 }
 
-// Search Courses
 function searchCourses() {
     const searchInput = document
         .getElementById("searchCourses")
@@ -55,18 +84,9 @@ function searchCourses() {
         course.subject.toLowerCase().includes(searchInput)
     );
 
-    displayFilteredCourses(filteredCourses);
+    displayCourses(filteredCourses);
 }
 
-// Display Search Results
-function displayFilteredCourses(courseList) {
-    displayCourses(courseList);
-}
-
-// Page Load
-refreshCourses();
-
-// View Course Button
 function viewCourse(id) {
     const course = courses.find((item) => item.id === id);
 
@@ -100,20 +120,21 @@ function editCourse(id) {
     window.location.href = `add-course.html?id=${id}`;
 }
 
-async function deleteCourse(id) {
+function deleteCourse(id) {
     const confirmed = confirm("Delete this course?");
 
     if (!confirmed) {
         return;
     }
 
-    const response = await fetch(`/api/courses/${id}`, { method: "DELETE" });
-
-    if (response.ok || response.status === 204) {
-        await refreshCourses();
-    }
+    courses = courses.filter((course) => course.id !== id);
+    saveCourses();
+    refreshCourses();
 }
 
 window.viewCourse = viewCourse;
 window.editCourse = editCourse;
 window.deleteCourse = deleteCourse;
+window.searchCourses = searchCourses;
+
+refreshCourses();

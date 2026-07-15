@@ -7,7 +7,29 @@ function getCourseIdFromUrl() {
     return params.get("id");
 }
 
-async function populateFormIfEditing() {
+function loadCourses() {
+    const stored = localStorage.getItem("courseCatalog");
+    return stored ? JSON.parse(stored) : [];
+}
+
+function saveCourses(courses) {
+    localStorage.setItem("courseCatalog", JSON.stringify(courses));
+}
+
+function setStatus(message, isError = false) {
+    let status = document.getElementById("saveStatus");
+    if (!status) {
+        status = document.createElement("p");
+        status.id = "saveStatus";
+        status.style.marginTop = "1rem";
+        status.style.fontWeight = "bold";
+        form.appendChild(status);
+    }
+    status.textContent = message;
+    status.style.color = isError ? "#b91c1c" : "#166534";
+}
+
+function populateFormIfEditing() {
     const id = getCourseIdFromUrl();
 
     if (!id) {
@@ -15,46 +37,58 @@ async function populateFormIfEditing() {
     }
 
     pageTitle.textContent = "Edit Course";
-
-    const response = await fetch(`/api/courses/${id}`);
-    const course = await response.json();
+    const courses = loadCourses();
+    const course = courses.find((item) => item.id === Number(id));
 
     if (!course) {
+        setStatus("The selected course could not be found.", true);
         return;
     }
 
     hiddenId.value = course.id;
-    document.getElementById("subject").value = course.subject;
-    document.getElementById("number").value = course.number;
-    document.getElementById("name").value = course.name;
-    document.getElementById("credits").value = course.credits;
-    document.getElementById("description").value = course.description;
+    document.getElementById("subject").value = course.subject || "";
+    document.getElementById("number").value = course.number || "";
+    document.getElementById("name").value = course.name || "";
+    document.getElementById("credits").value = course.credits || "";
+    document.getElementById("description").value = course.description || "";
 }
 
-form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+if (form) {
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-    const payload = {
-        subject: document.getElementById("subject").value,
-        number: document.getElementById("number").value,
-        name: document.getElementById("name").value,
-        credits: Number(document.getElementById("credits").value),
-        description: document.getElementById("description").value
-    };
+        const payload = {
+            subject: document.getElementById("subject")?.value || "",
+            number: document.getElementById("number")?.value || "",
+            name: document.getElementById("name")?.value || "",
+            credits: Number(document.getElementById("credits")?.value || 0),
+            description: document.getElementById("description")?.value || ""
+        };
 
-    const id = hiddenId.value;
-    const method = id ? "PUT" : "POST";
-    const url = id ? `/api/courses/${id}` : "/api/courses";
+        if (!payload.subject || !payload.number || !payload.name || !payload.description) {
+            setStatus("Please fill in the required course fields before saving.", true);
+            return;
+        }
 
-    const response = await fetch(url, {
-        method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        const id = hiddenId.value;
+        const courses = loadCourses();
+
+        if (id) {
+            const index = courses.findIndex((course) => course.id === Number(id));
+            if (index !== -1) {
+                courses[index] = { ...courses[index], ...payload, id: Number(id) };
+            }
+        } else {
+            const newId = courses.length ? Math.max(...courses.map((course) => course.id)) + 1 : 1;
+            courses.push({ id: newId, ...payload });
+        }
+
+        saveCourses(courses);
+        setStatus("Course saved successfully.");
+        window.setTimeout(() => {
+            window.location.href = "courses.html";
+        }, 300);
     });
-
-    if (response.ok) {
-        window.location.href = "courses.html";
-    }
-});
+}
 
 populateFormIfEditing();
