@@ -37,7 +37,7 @@ async function populateFormIfEditing() {
     try {
 
         const response = await fetch(
-            `http://localhost:3000/api/courses/${id}`
+            `https://course-management-system-32f7.onrender.com/api/courses/${id}`
         );
 
         if (!response.ok) {
@@ -100,14 +100,14 @@ if (form) {
 
             const id = hiddenId.value;
 
-            let url = "http://localhost:3000/api/courses";
+            let url = "https://course-management-system-32f7.onrender.com/api/courses";
             let method = "POST";
 
 
             // Editing existing course
             if (id) {
 
-                url = `http://localhost:3000/api/courses/${id}`;
+                url = `https://course-management-system-32f7.onrender.com/api/courses/${id}`;
                 method = "PUT";
 
             }

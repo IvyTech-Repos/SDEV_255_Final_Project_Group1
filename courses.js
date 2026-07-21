@@ -5,7 +5,7 @@ async function loadCourses() {
 
     try {
         const response = await fetch(
-            "http://localhost:3000/api/courses"
+            "https://course-management-system-32f7.onrender.com/api/courses"
         );
 
         if (!response.ok) {
@@ -111,7 +111,7 @@ async function deleteCourse(id) {
     try {
 
         const response = await fetch(
-            `http://localhost:3000/api/courses/${id}`,
+            `https://course-management-system-32f7.onrender.com/api/courses/${id}`,
             {
                 method: "DELETE"
             }
