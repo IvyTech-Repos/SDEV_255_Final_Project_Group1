@@ -1,159 +1,265 @@
-/*Homepage Hero Section*/
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;600;700&display=swap");
 
-.hero {
-  text-align: center;
-  padding: 3rem 1rem;
-  max-width: 900px;
-  margin: 0 auto;
+:root {
+  --bg: #f7efe4;
+  --bg-soft: #fff8ee;
+  --surface: #fffdf9;
+  --surface-2: #fff6ea;
+  --ink: #2d1d12;
+  --muted: #725848;
+  --accent: #c24721;
+  --accent-dark: #8f3219;
+  --accent-soft: #fce5d9;
+  --line: #e8d8c9;
+  --shadow: 0 14px 30px rgba(128, 70, 32, 0.13);
 }
 
-.hero h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+* {
+  box-sizing: border-box;
 }
 
-.hero p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+body {
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 6% 14%, #f5cfae 0, rgba(245, 207, 174, 0) 28%),
+    radial-gradient(circle at 92% 10%, #f0dbb6 0, rgba(240, 219, 182, 0) 24%),
+    linear-gradient(170deg, var(--bg) 0%, #fdf8f2 100%);
 }
 
-/*Portal Selection*/
-
-.portal-selection {
-  padding: 2rem 1rem;
-  text-align: center;
+a {
+  color: inherit;
 }
-
-.portal-selection h2 {
-  margin-bottom: 2rem;
-}
-
-.portal-cards {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.portal-card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 2rem;
-  width: 300px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.portal-card h3 {
-  margin-bottom: 1rem;
-}
-
-.portal-card p {
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-}
-
-/*Navigation & Header*/
 
 header {
-  padding: 1.5rem;
   text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+header h1 {
+  margin: 0 0 1rem;
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.7rem);
+  letter-spacing: 0.02em;
 }
 
 nav ul {
   list-style: none;
+  margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
-/*Buttons*/
-
-.button {
+nav a {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #2563eb;
-  color: white;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-  cursor: pointer;
-  font-size: 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.button:hover {
-  background-color: #1d4ed8;
+nav a:hover,
+nav a.active {
+  color: var(--accent-dark);
+  border-color: #d9a986;
+  transform: translateY(-1px);
 }
 
-/*Register for Classes Section*/
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
+}
 
-body {
-  font-family: Arial, sans-serif;
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem 2rem;
+  color: var(--muted);
+}
+
+.hero,
+.page-header {
+  text-align: center;
+  padding: 2.2rem 1.4rem;
+  max-width: 960px;
+  margin: 0 auto 1.8rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 245, 232, 0.82));
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+
+.hero h2,
+.page-header h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+  font-family: "Sora", "Segoe UI", sans-serif;
+}
+
+.hero p,
+.page-header p {
+  margin: 0 auto;
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.portal-selection {
+  padding: 0.5rem 0 1.2rem;
+  text-align: center;
+}
+
+.portal-selection h2 {
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-size: 1.7rem;
+  margin: 0 0 1.6rem;
+}
+
+.portal-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.3rem;
+}
+
+.book-visual {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: linear-gradient(160deg, rgba(255, 252, 247, 0.94), rgba(255, 240, 224, 0.8));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.book-visual h2 {
   margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background: #f0f4f8;
-  color: #1f2937;
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-size: clamp(1.4rem, 2.1vw, 2rem);
 }
 
-/*Dashboard Cards*/
+.book-visual p {
+  max-width: 700px;
+  margin: 0.7rem auto 1.2rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.book-visual img {
+  width: min(860px, 100%);
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fffaf3;
+}
+
+.portal-card,
+.dashboard-card {
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.portal-card h3,
+.dashboard-card h3 {
+  margin: 0 0 0.75rem;
+  font-family: "Sora", "Segoe UI", sans-serif;
+}
+
+.portal-card p,
+.dashboard-card p {
+  margin: 0 0 1.1rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.3rem;
+  margin-top: 1.4rem;
 }
 
-.dashboard-card {
-  padding: 1.5rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #ffffff;
+.button,
+button {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  background: linear-gradient(180deg, #d8572f, var(--accent));
+  color: #fff;
+  border: 0;
+  border-radius: 11px;
+  text-decoration: none;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.dashboard-card button {
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
+.button:hover,
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.95);
 }
 
-/*Course Page Layout*/
-
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-.page-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.page-header h2 {
-  margin-bottom: 1rem;
-}
-
-.page-header p {
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
+button:disabled {
+  background: #d8c4b2;
+  color: #fff8f2;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
 }
 
 .course-controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1 rem;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 1.3rem;
+  flex-wrap: wrap;
+}
+
+.course-controls input,
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.72rem 0.85rem;
+  border-radius: 11px;
+  border: 1px solid #dbc4af;
+  background: #fffdfa;
+  color: var(--ink);
+  font: inherit;
 }
 
 .course-controls input {
-  padding: 0.75rem;
-  width: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  width: min(350px, 100%);
+}
+
+form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+form > div {
+  margin-bottom: 0.95rem;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.42rem;
+  font-weight: 600;
 }
 
 .course-table {
@@ -164,14 +270,61 @@ main {
 .course-table table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
 .course-table th,
 .course-table td {
-  padding: 1rem;
+  padding: 0.9rem;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.course-table th {
+  background: var(--accent-soft);
+  font-family: "Sora", "Segoe UI", sans-serif;
+}
+
+.course-table td button {
+  margin: 0 0.45rem 0.45rem 0;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+input:focus,
+textarea:focus,
+button:focus,
+a:focus {
+  outline: 2px solid #e09063;
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding-top: 1.4rem;
+  }
+
+  .hero,
+  .page-header,
+  .portal-card,
+  .dashboard-card {
+    border-radius: 14px;
+  }
+
+  .course-table th,
+  .course-table td {
+    font-size: 0.92rem;
+    padding: 0.75rem;
+  }
+
+  .button,
+  button {
+    width: 100%;
+    text-align: center;
+  }
 }
