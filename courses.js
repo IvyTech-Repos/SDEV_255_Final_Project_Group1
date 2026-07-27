@@ -1,6 +1,8 @@
 // Course Management System
 let courses = [];
 
+const role = localStorage.getItem("role");
+
 async function loadCourses() {
 
     try {
@@ -39,10 +41,16 @@ function displayCourses(courseList = courses) {
             <td>${course.number}</td>
             <td>${course.name}</td>
             <td>${course.credits}</td>
-            <td>
-                <button onclick="viewCourse(${course.id})">View</button>
-                <button onclick="editCourse(${course.id})">Edit</button>
-                <button onclick="deleteCourse(${course.id})">Delete</button>
+            <td><button onclick="viewCourse(${course.id})">View</button>
+
+            ${
+                role === "teacher"
+                ? `
+                    <button onclick="editCourse(${course.id})">Edit</button>
+                    <button onclick="deleteCourse(${course.id})">Delete</button>
+                 `
+                 : ""
+            }
             </td>
         `;
 
@@ -107,13 +115,15 @@ async function deleteCourse(id) {
         return;
     }
 
-
     try {
 
         const response = await fetch(
             `https://course-management-system-32f7.onrender.com/api/courses/${id}`,
             {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
             }
         );
 
@@ -126,7 +136,6 @@ async function deleteCourse(id) {
 
 
         await response.json();
-
 
         loadCourses();
 

@@ -7,9 +7,17 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Course Management System</h1>
-  </header>
+    <header>
+        <h1>Course Management System</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><button id="logoutBtn">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
 
   <main>
     <section class="course-form">
@@ -34,6 +42,12 @@
       <ul id="courseList"></ul>
     </section>
   </main>
+  
+  <footer>
+    <p>&copy; 2026 Course Management System</p>
+  </footer>
+  
+  <script src="logout.js"></script>
 
 </body>
 </html>

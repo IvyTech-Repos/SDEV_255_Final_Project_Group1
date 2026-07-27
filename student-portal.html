@@ -20,6 +20,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="courses.html">Courses</a></li>
                 <li><a href="student-portal.html" class="active">Student Portal</a></li>
+                <li><button id="logoutBtn">Logout</button></li>
             </ul>
         </nav>
     </header>
@@ -66,6 +67,13 @@
     <footer>
         <p>&copy; 2026 Course Management System</p>
     </footer>
+
+    <script src="auth.js"></script>
+    
+    <script>
+        checkAuth("student");
+    </script>
+    <script src="logout.js"></script>
 
 </body>
 </html>

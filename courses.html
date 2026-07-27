@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="courses.html" class="active">Courses</a></li>
-                <li><a href="add-course.html">Add Course</a></li>
+                <li><button id="logoutBtn">Logout</button></li>
             </ul>
         </nav>
     </header>
@@ -38,7 +38,7 @@
             placeholder="Search courses..."
             onkeyup="searchCourses()">
 
-            <a href="add-course.html" class="button">
+            <a id="addCourseBtn" href="add-course.html" class="button>
                 + Add Course
             </a>
 
@@ -74,6 +74,19 @@
     </footer>
 
     <script src="courses.js"></script>
+
+    <script>
+        const role = localStorage.getItem("role");
+
+        if (role !== "teacher") {
+            const addButton = document.getElementById("addCourseBtn");
+
+            if (addButton) {
+                addButton.style.display = "none";
+            }
+        }
+    </script>
+    <script src="logout.js"></script>
 
 </body>
 </html>

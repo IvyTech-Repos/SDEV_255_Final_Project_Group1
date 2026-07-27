@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="courses.html">Courses</a></li>
-                <li><a href="add-course.html" class="active">Add Course</a></li>
+                <li><button id="logoutBtn">Logout</button></li>
             </ul>
         </nav>
     </header>
@@ -60,5 +60,11 @@
     </footer>
 
     <script src="add-course.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        checkAuth("teacher");
+    </script>
+    <script src="logout.js"></script>
+
 </body>
 </html>
