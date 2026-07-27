@@ -4,31 +4,45 @@ async function login() {
     const username = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
 
-    const response = await fetch("https://course-management-system-32f7.onrender.com/api/login", {
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            username,
-            password
-        })
-    });
+    try {
 
-    const data = await response.json();
+        const response = await fetch(
+            "https://course-management-system-32f7.onrender.com/api/login",
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    username,
+                    password
+                })
+            }
+        );
 
-    if(!response.ok){
-        document.querySelector("#message").textContent = data.message;
-        return;
-    }
+        const data = await response.json();
 
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("role", data.role);
+        if(!response.ok){
+            document.querySelector("#message").textContent = data.error;
+            return;
+        }
 
-    if(data.role === "teacher"){
-        window.location.href = "teacher-portal.html";
-    }
-    else{
-        window.location.href = "student-portal.html";
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.role);
+
+        if(data.role === "teacher"){
+            window.location.href = "teacher-portal.html";
+        }
+        else{
+            window.location.href = "student-portal.html";
+        }
+
+    } catch(error) {
+
+        console.error(error);
+
+        document.querySelector("#message").textContent =
+            "Unable to connect to server.";
+
     }
 }
