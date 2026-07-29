@@ -41,15 +41,26 @@ function displayCourses(courseList = courses) {
             <td>${course.number}</td>
             <td>${course.name}</td>
             <td>${course.credits}</td>
-            <td><button onclick="viewCourse(${course.id})">View</button>
+            <td>
+
+            <button onclick="viewCourse(${course.id})">View</button>
+
+            ${
+                role === "student"
+                ? `
+                    <button onclick="addToCart(${course.id})">Add to Cart</button>
+                `
+                : ""
+            }
 
             ${
                 role === "teacher"
                 ? `
                     <button onclick="editCourse(${course.id})">Edit</button>
+
                     <button onclick="deleteCourse(${course.id})">Delete</button>
-                 `
-                 : ""
+                `
+                : ""
             }
             </td>
         `;
@@ -148,11 +159,52 @@ async function deleteCourse(id) {
     }
 }
 
+async function addToCart(courseId) {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Please login first.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            "https://course-management-system-32f7.onrender.com/api/cart",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    course.Id: courseId
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message);
+            return;
+        }
+
+        alert("Course added to cart!");
+
+    } catch(error) {
+        console.error(error);
+        alert("Unable to add course.");
+
+    }
+}
+
 
 window.viewCourse = viewCourse;
 window.editCourse = editCourse;
 window.deleteCourse = deleteCourse;
 window.searchCourses = searchCourses;
+window.addToCart = addToCart;
 
 
 loadCourses();
