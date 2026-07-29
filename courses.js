@@ -178,7 +178,7 @@ async function addToCart(courseId) {
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    course.Id: courseId
+                    courseId: courseId,
                 })
             }
         );
