@@ -38,7 +38,7 @@
             placeholder="Search courses..."
             onkeyup="searchCourses()">
 
-            <a id="addCourseBtn" href="add-course.html" class="button>
+            <a id="addCourseBtn" href="add-course.html" class="button">
                 + Add Course
             </a>
 
@@ -76,16 +76,15 @@
     <script src="courses.js"></script>
 
     <script>
-        const role = localStorage.getItem("role");
-
-        if (role !== "teacher") {
+        if (localStorage.getItem("role") !== "teacher") {
             const addButton = document.getElementById("addCourseBtn");
-
+            
             if (addButton) {
                 addButton.style.display = "none";
             }
         }
     </script>
+
     <script src="logout.js"></script>
 
 </body>
