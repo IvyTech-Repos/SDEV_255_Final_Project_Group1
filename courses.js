@@ -110,7 +110,15 @@ function viewCourse(id) {
         </td>
     `;
 
-    tableBody.appendChild(detailsRow);
+    const courseRows = Array.from(tableBody.children);
+
+    const selectedRow = courseRows.find(row =>
+        row.innerHTML.includes(`viewCourse(${id})`)
+    );
+
+    if(selectedRow) {
+        selectedRow.after(detailsRow);
+    }
 }
 
 function editCourse(id) {
