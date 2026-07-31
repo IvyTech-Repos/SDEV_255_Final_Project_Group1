@@ -45,14 +45,17 @@
             </div>
 
             <div class="dashboard-card">
-                <h3>Grades</h3>
-                <p>View current grades and academic progress.</p>
-                <button disabled>Coming Soon</button>
+                <h3>My Schedule</h3>
+                <p>Your schedule shows the classes you have added to your cart.</p>
+
+                <div id="scheduleContainer">
+                    <p>Loading schedule...</p>
+                </div>
             </div>
 
             <div class="dashboard-card">
-                <h3>Schedule</h3>
-                <p>View upcoming classes and important dates.</p>
+                <h3>Grades</h3>
+                <p>View current grades and academic progress.</p>
                 <button disabled>Coming Soon</button>
             </div>
 
@@ -76,6 +79,7 @@
         checkAuth("student");
     </script>
     <script src="cart.js"></script>
+    <script src="schedule.js"></script>
     <script src="logout.js"></script>
 
 </body>
